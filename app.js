@@ -26,7 +26,9 @@ const updateSeconds = () => {
   minuteDiv.textContent = `${minutesLeft}`;
 
   if(minutesLeft === 0 && secondsLeft === 0) {
-    bells.play()
+    bells.play().catch(error => {
+      console.log('Could not play audio: ', error);
+    })
     clearInterval(myInterval);
     state = true;
     isPaused = false;

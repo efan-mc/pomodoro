@@ -2,6 +2,9 @@ const bells = new Audio('./sounds/bells.wav');
 const startBtn = document.querySelector('.btn-start');
 const resetBtn = document.querySelector('.btn-reset');
 const pauseBtn = document.querySelector('.btn-pause');
+const plusBtn = document.querySelector('.btn-plus');
+const minusBtn = document.querySelector('.btn-minus');
+const sessionTime = document.querySelector('.session-time');
 const session = document.querySelector('.minutes');
 const DEFAULT_SESSION_MINUTES = 25;
 let myInterval;
@@ -61,6 +64,7 @@ const resetTimer = () => {
 
   minuteDiv.textContent = DEFAULT_SESSION_MINUTES;
   secondDiv.textContent = '00';
+  sessionTime.textContent = '25';
 }
 
 resetBtn.addEventListener('click', resetTimer);
@@ -81,3 +85,31 @@ const pauseTimer = () => {
 }
 
 pauseBtn.addEventListener('click', pauseTimer);
+
+const addTime = () => {
+  const current = parseInt(sessionTime.textContent);
+
+  if (state) {
+    if (current < 60) {
+      let newTime = current + 5;
+      sessionTime.textContent = newTime;
+      session.textContent = newTime;
+    } 
+  }
+}
+
+plusBtn.addEventListener('click', addTime);
+
+const subtractTime = () => {
+  const current = parseInt(sessionTime.textContent);
+    
+  if (state) {
+    if (current > 5) {
+      let newTime = current - 5;
+      sessionTime.textContent = newTime;
+      session.textContent = newTime;
+    } 
+  }
+}
+
+minusBtn.addEventListener('click', subtractTime);

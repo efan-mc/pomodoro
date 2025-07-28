@@ -42,7 +42,7 @@ const appTimer = () => {
         isPaused = false;
         totalSeconds = sessionAmount * 60;
         myInterval = setInterval(updateSeconds, 1000);
-    } else if (isPaused) {
+    } else {
         alert('Session has already started.')
     }
 };

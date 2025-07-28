@@ -4,9 +4,13 @@ const resetBtn = document.querySelector('.btn-reset');
 const pauseBtn = document.querySelector('.btn-pause');
 const plusBtn = document.querySelector('.btn-plus');
 const minusBtn = document.querySelector('.btn-minus');
+const breakBtn = document.querySelector('.btn-break');
+const workBtn = document.querySelector('.btn-work')
 const sessionTime = document.querySelector('.session-time');
 const session = document.querySelector('.minutes');
 const DEFAULT_SESSION_MINUTES = 25;
+const DEFAULT_BREAK_MINUTES = 5;
+const DEFAULT_INCREMENT = 5;
 let myInterval;
 let state = true;
 let isPaused = false;
@@ -43,12 +47,17 @@ const appTimer = () => {
     const sessionAmount = Number.parseInt(session.textContent);
 
     if (state) {
-        state = false;
-        isPaused = false;
-        totalSeconds = sessionAmount * 60;
-        myInterval = setInterval(updateSeconds, 1000);
+      state = false;
+      isPaused = false;
+      totalSeconds = sessionAmount * 60;
+      myInterval = setInterval(updateSeconds, 1000);
+      pauseBtn.textContent = 'pause';
+    } else if (isPaused){ 
+      isPaused = false
+      myInterval = setInterval(updateSeconds, 1000);
+      pauseBtn.textContent = 'pause';
     } else {
-        alert('Session has already started.')
+      alert('Session has already started.')
     }
 };
 
@@ -70,18 +79,15 @@ const resetTimer = () => {
 resetBtn.addEventListener('click', resetTimer);
 
 const pauseTimer = () => {
-  if (!state) {
-    if (!isPaused) {
-      clearInterval(myInterval);
-      isPaused = true;
-      pauseBtn.textContent = 'resume';
-    } else {
-      myInterval = setInterval(updateSeconds, 1000);
-      isPaused = false;
-      pauseBtn.textContent = 'pause';
-    }
+  if (!state && !isPaused) {
+    clearInterval(myInterval);
+    isPaused = true;
+    pauseBtn.textContent = 'resume';
+  } else if (!state && isPaused) {
+    myInterval = setInterval(updateSeconds, 1000);
+    isPaused = false;
+    pauseBtn.textContent = 'pause';
   }
-
 }
 
 pauseBtn.addEventListener('click', pauseTimer);
@@ -113,3 +119,31 @@ const subtractTime = () => {
 }
 
 minusBtn.addEventListener('click', subtractTime);
+
+const breakTime = () => {
+  if (state || isPaused) {
+    sessionTime.textContent = DEFAULT_BREAK_MINUTES;
+    session.textContent = DEFAULT_BREAK_MINUTES;
+    document.querySelector('.seconds').textContent = '00';
+
+    if (isPaused) {
+      totalSeconds = 5 * 60;
+    }
+  }
+}; 
+
+breakBtn.addEventListener('click', breakTime);
+
+const workTime = () => {
+  if (state || isPaused) {
+    sessionTime.textContent = DEFAULT_SESSION_MINUTES;
+    session.textContent = DEFAULT_SESSION_MINUTES;
+    document.querySelector('.seconds').textContent = '00';
+
+    if (isPaused) {
+      totalSeconds = 25 * 60; 
+    }
+  }
+}; 
+
+workBtn.addEventListener('click', workTime);

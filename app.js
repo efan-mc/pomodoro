@@ -66,15 +66,18 @@ const resetTimer = () => {
 resetBtn.addEventListener('click', resetTimer);
 
 const pauseTimer = () => {
-  if (!isPaused) {
-    clearInterval(myInterval);
-    isPaused = true;
-    pauseBtn.textContent = 'resume';
-  } else {
-    myInterval = setInterval(updateSeconds, 1000);
-    isPaused = false;
-    pauseBtn.textContent = 'pause';
+  if (!state) {
+    if (!isPaused) {
+      clearInterval(myInterval);
+      isPaused = true;
+      pauseBtn.textContent = 'resume';
+    } else {
+      myInterval = setInterval(updateSeconds, 1000);
+      isPaused = false;
+      pauseBtn.textContent = 'pause';
+    }
   }
+
 }
 
 pauseBtn.addEventListener('click', pauseTimer);

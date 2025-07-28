@@ -91,9 +91,11 @@ p {
     text-shadow: 0 0 10px rgba(216, 233, 239, 0.3);
 }
 
+.timer-controls {
+    margin-top: 70px;
+}
+
 button {
-    position: relative;
-    top: 70px;
     font-size: 80%;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -115,5 +117,43 @@ button:active {
 }
 
 .btn-pause {
-    top: 25px;
+    margin-top: 20px;
+}
+
+.session-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    gap: 1.5rem;
+}
+
+.session-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 20px;
+}
+
+.session-time {
+    font-size: 1.3rem;
+    font-weight: 500;
+    min-width: 40px;
+    text-align: center;
+    text-shadow: 0 0 5px rgba(216, 233, 239, 0.2);
+}
+
+.session-controls button {
+  font-size: 0.8rem;
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #d8e9ef;
+  transition: background-color 0.2s ease;
+}
+
+.session-controls button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }

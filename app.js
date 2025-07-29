@@ -7,6 +7,7 @@ const minusBtn = document.querySelector('.btn-minus');
 const breakBtn = document.querySelector('.btn-break');
 const workBtn = document.querySelector('.btn-work')
 const settingsBtn = document.querySelector('.btn-settings');
+const closeBtn = document.querySelector('.btn-close-settings')
 const settingsMenu = document.querySelector('.off-screen-menu');
 const sessionTime = document.querySelector('.session-time');
 const session = document.querySelector('.minutes');
@@ -219,4 +220,8 @@ const showPopup = (message, duration = 1400) => {
 
 settingsBtn.addEventListener('click', () => {
   settingsMenu.classList.toggle('active');
+});
+
+closeBtn.addEventListener('click', () => {
+  settingsMenu.classList.remove('active');
 });

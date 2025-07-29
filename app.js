@@ -74,7 +74,7 @@ const resetTimer = () => {
   minuteDiv.textContent = DEFAULT_SESSION_MINUTES;
   secondDiv.textContent = '00';
   sessionTime.textContent = '25';
-}
+};
 
 resetBtn.addEventListener('click', resetTimer);
 
@@ -88,7 +88,7 @@ const pauseTimer = () => {
     isPaused = false;
     pauseBtn.textContent = 'pause';
   }
-}
+};
 
 pauseBtn.addEventListener('click', pauseTimer);
 
@@ -106,9 +106,8 @@ const addTime = () => {
   if (!state && !isPaused) {
   showPopup('please pause before changing time');
   return;
-}
-
-}
+  }
+};
 
 plusBtn.addEventListener('click', addTime);
 
@@ -122,13 +121,12 @@ const subtractTime = () => {
       session.textContent = newTime;
     } 
   }
-
+    
   if (!state && !isPaused) {
   showPopup('please pause before changing time');
   return;
-}
-
-}
+  }
+};
 
 minusBtn.addEventListener('click', subtractTime);
 
@@ -145,8 +143,7 @@ const breakTime = () => {
   if (!state && !isPaused) {
   showPopup('please pause before changing time');
   return;
-}
-
+  }
 }; 
 
 breakBtn.addEventListener('click', breakTime);
@@ -164,8 +161,7 @@ const workTime = () => {
   if (!state && !isPaused) {
   showPopup('please pause before changing time');
   return;
-}
-
+  }
 }; 
 
 workBtn.addEventListener('click', workTime);

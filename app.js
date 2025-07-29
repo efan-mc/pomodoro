@@ -102,6 +102,12 @@ const addTime = () => {
       session.textContent = newTime;
     } 
   }
+
+  if (!state && !isPaused) {
+  showPopup('please pause before changing time');
+  return;
+}
+
 }
 
 plusBtn.addEventListener('click', addTime);
@@ -116,6 +122,12 @@ const subtractTime = () => {
       session.textContent = newTime;
     } 
   }
+
+  if (!state && !isPaused) {
+  showPopup('please pause before changing time');
+  return;
+}
+
 }
 
 minusBtn.addEventListener('click', subtractTime);
@@ -130,6 +142,11 @@ const breakTime = () => {
       totalSeconds = 5 * 60;
     }
   }
+  if (!state && !isPaused) {
+  showPopup('please pause before changing time');
+  return;
+}
+
 }; 
 
 breakBtn.addEventListener('click', breakTime);
@@ -144,6 +161,21 @@ const workTime = () => {
       totalSeconds = 25 * 60; 
     }
   }
+  if (!state && !isPaused) {
+  showPopup('please pause before changing time');
+  return;
+}
+
 }; 
 
 workBtn.addEventListener('click', workTime);
+
+const showPopup = (message, duration = 1400) => {
+  const popup = document.getElementById('popup');
+  popup.textContent = message;
+  popup.classList.add('show');
+
+  setTimeout(() => {
+    popup.classList.remove('show');
+  }, duration)
+};

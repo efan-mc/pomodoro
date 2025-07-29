@@ -39,7 +39,7 @@ const updateSeconds = () => {
     clearInterval(myInterval);
     state = true;
     isPaused = false;
-    pauseBtn.textContent = 'pause';
+    pauseBtn.textContent = '⏸';
   }
 };
 
@@ -51,11 +51,11 @@ const appTimer = () => {
       isPaused = false;
       totalSeconds = sessionAmount * 60;
       myInterval = setInterval(updateSeconds, 1000);
-      pauseBtn.textContent = 'pause';
+      pauseBtn.textContent = '⏸';
     } else if (isPaused){ 
       isPaused = false
       myInterval = setInterval(updateSeconds, 1000);
-      pauseBtn.textContent = 'pause';
+      pauseBtn.textContent = '⏸';
     } else {
       alert('Session has already started.')
     }
@@ -69,25 +69,25 @@ const resetTimer = () => {
   clearInterval(myInterval); 
   state = true;
   isPaused = false;
-  pauseBtn.textContent = 'pause';
+  pauseBtn.textContent = '⏸';
 
   minuteDiv.textContent = DEFAULT_SESSION_MINUTES;
   secondDiv.textContent = '00';
-  sessionTime.textContent = '25';
+  sessionTime.textContent = DEFAULT_SESSION_MINUTES;
 };
 
 resetBtn.addEventListener('click', resetTimer);
 
 const pauseTimer = () => {
-  if (!state && !isPaused) {
+    if (!state && !isPaused) {
     clearInterval(myInterval);
     isPaused = true;
-    pauseBtn.textContent = 'resume';
-  } else if (!state && isPaused) {
+    pauseBtn.textContent = '▶';
+    } else if (!state && isPaused) {
     myInterval = setInterval(updateSeconds, 1000);
     isPaused = false;
-    pauseBtn.textContent = 'pause';
-  }
+    pauseBtn.textContent = '⏸';
+    }
 };
 
 pauseBtn.addEventListener('click', pauseTimer);
@@ -97,7 +97,7 @@ const addTime = () => {
 
   if (state) {
     if (current < 60) {
-      let newTime = current + 5;
+      let newTime = current + DEFAULT_INCREMENT;
       sessionTime.textContent = newTime;
       session.textContent = newTime;
     } 
@@ -116,7 +116,7 @@ const subtractTime = () => {
     
   if (state) {
     if (current > 5) {
-      let newTime = current - 5;
+      let newTime = current - DEFAULT_INCREMENT;
       sessionTime.textContent = newTime;
       session.textContent = newTime;
     } 
@@ -137,7 +137,7 @@ const breakTime = () => {
     document.querySelector('.seconds').textContent = '00';
 
     if (isPaused) {
-      totalSeconds = 5 * 60;
+      totalSeconds = DEFAULT_BREAK_MINUTES * 60;
     }
   }
 
@@ -156,7 +156,7 @@ const workTime = () => {
     document.querySelector('.seconds').textContent = '00';
 
     if (isPaused) {
-      totalSeconds = 25 * 60; 
+      totalSeconds = DEFAULT_SESSION_MINUTES * 60; 
     }
   }
 

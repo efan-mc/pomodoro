@@ -13,6 +13,21 @@
     <title>Pomodoro App</title>
   </head>
   <body>
+    <div class="off-screen-menu">
+      <h2>Settings</h2>
+      <div class="setting-group">
+        <div for="sessionLength">Session Length (min)</div>
+        <input type="number" id="sessionLength" min="1" max="60" value="25" />
+
+        <div for="breakLength">Break Length (min)</div>
+        <input type="number" id="breakLength" min="1" max="60" value="5" />
+
+        <div for="autoNext">Auto-Start Next Session</div>
+        <input type="checkbox" id="autoNext" />
+      </div>
+    </div>
+    <button class="btn-settings" title="Settings">⚙</button>
+    <button class="toggle-theme" title="Settings">☀️</button>
     <div class="app-container">
       <h1>pomodoro</h1>
       <div class="app-message">press start to begin</div>

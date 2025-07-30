@@ -7,13 +7,17 @@ const minusBtn = document.querySelector('.btn-minus');
 const breakBtn = document.querySelector('.btn-break');
 const workBtn = document.querySelector('.btn-work')
 const settingsBtn = document.querySelector('.btn-settings');
-const closeBtn = document.querySelector('.btn-close-settings')
+const closeBtn = document.querySelector('.btn-close-settings');
+const applyBtn = document.querySelector('.btn-apply-settings');
+const sessionInput = document.getElementById('sessionLength');
+const breakInput = document.getElementById('breakLength');
+const autoNextCheckbox = document.getElementById('autoNext');
 const settingsMenu = document.querySelector('.off-screen-menu');
 const sessionTime = document.querySelector('.session-time');
 const session = document.querySelector('.minutes');
 const DEFAULT_SESSION_MINUTES = 25;
-const DEFAULT_BREAK_MINUTES = 5;
 const DEFAULT_INCREMENT = 5;
+let breakMinutes = 5;
 let myInterval;
 let state = true;
 let isPaused = false;
@@ -169,12 +173,12 @@ const breakTime = () => {
   updateCircleProgress();
 
   if (state || isPaused) {
-    sessionTime.textContent = DEFAULT_BREAK_MINUTES;
-    session.textContent = DEFAULT_BREAK_MINUTES;
+    sessionTime.textContent = breakMinutes;
+    session.textContent = breakMinutes;
     document.querySelector('.seconds').textContent = '00';
 
     if (isPaused) {
-      totalSeconds = DEFAULT_BREAK_MINUTES * 60;
+      totalSeconds = breakMinutes * 60;
     }
   }
 
@@ -223,5 +227,23 @@ settingsBtn.addEventListener('click', () => {
 });
 
 closeBtn.addEventListener('click', () => {
+  settingsMenu.classList.remove('active');
+});
+
+applyBtn.addEventListener('click', () => {
+  const newSession = parseInt(sessionInput.value);
+  const newBreak = parseInt(breakInput.value);
+
+  if (newSession >= 1 && newSession <= 60) {
+    session.textContent = newSession;
+    sessionTime.textContent = newSession;
+  }
+
+  if (newBreak >= 1 && newBreak <= 60) {
+    breakMinutes = newBreak;
+  }
+
+  autoNext = autoNextCheckbox.checked;
+
   settingsMenu.classList.remove('active');
 });

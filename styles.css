@@ -334,3 +334,18 @@ button:active {
   margin-right: 8px;
   accent-color: #bf5239;
 }
+
+.apply-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.btn-apply-settings {
+  padding: 0.4rem 1rem;
+  font-size: 0.8rem;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #d8e9ef;
+  transition: background-color 0.2s ease;
+}

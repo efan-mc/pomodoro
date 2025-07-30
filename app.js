@@ -171,6 +171,11 @@ const subtractTime = () => {
 minusBtn.addEventListener('click', subtractTime);
 
 const breakTime = () => {
+  if (!state && !isPaused) {
+    showPopup('please pause before changing time');
+    return;
+    }
+
   elapsedSeconds = 0;
   updateCircleProgress();
 
@@ -184,15 +189,16 @@ const breakTime = () => {
     }
   }
 
-  if (!state && !isPaused) {
-    showPopup('please pause before changing time');
-    return;
-    }
 }; 
 
 breakBtn.addEventListener('click', breakTime);
 
 const workTime = () => {
+  if (!state && !isPaused) {
+    showPopup('please pause before changing time');
+    return;
+    }
+    
   elapsedSeconds = 0;
   updateCircleProgress();
 
@@ -206,10 +212,6 @@ const workTime = () => {
     }
   }
 
-  if (!state && !isPaused) {
-    showPopup('please pause before changing time');
-    return;
-    }
 }; 
 
 workBtn.addEventListener('click', workTime);

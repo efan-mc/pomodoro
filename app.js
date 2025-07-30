@@ -38,9 +38,9 @@ const updateCircleProgress = () => {
     if (degrees <= 180) {
     right.style.transform = `rotate(${degrees}deg)`;
     left.style.transform = `rotate(0deg)`;
-  } else {
+    } else {
     right.style.transform = `rotate(180deg)`;
-    left.style.transform = `rotate(${degrees - 180}deg)`;
+    left.style.transform = `rotate(${degrees-180}deg)`; 
   }
 };
 
@@ -146,7 +146,7 @@ const addTime = () => {
   if (!state && !isPaused) {
   showPopup('please pause before changing time');
   return;
-    }
+  }
 };
 
 plusBtn.addEventListener('click', addTime);
@@ -198,7 +198,7 @@ const workTime = () => {
     showPopup('please pause before changing time');
     return;
     }
-    
+
   elapsedSeconds = 0;
   updateCircleProgress();
 
@@ -237,6 +237,11 @@ closeBtn.addEventListener('click', () => {
 applyBtn.addEventListener('click', () => {
   const newSession = parseInt(sessionInput.value);
   const newBreak = parseInt(breakInput.value);
+
+  if (!state && !isPaused) {
+  showPopup('please pause before changing time');
+  return;
+  }
 
   if (newSession >= 1 && newSession <= 60) {
     session.textContent = newSession;

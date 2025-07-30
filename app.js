@@ -24,7 +24,6 @@ let myInterval;
 let state = true;
 let isPaused = false;
 let totalSeconds;
-let elapsedSeconds = 0;
 let rotationAngle = 0;
 
 const updateCircleProgress = () => {
@@ -104,8 +103,7 @@ startBtn.addEventListener('click', appTimer)
 const resetTimer = () => {
   const minuteDiv = document.querySelector('.minutes');
   const secondDiv = document.querySelector('.seconds');
-  elapsedSeconds = 0;
-  updateCircleProgress();
+  resetCircle();
   clearInterval(myInterval); 
   state = true;
   isPaused = false;
@@ -176,8 +174,7 @@ const breakTime = () => {
     return;
     }
 
-  elapsedSeconds = 0;
-  updateCircleProgress();
+  resetCircle();
 
   if (state || isPaused) {
     sessionTime.textContent = breakMinutes;
@@ -221,6 +218,8 @@ const showPopup = (message, duration = 1400) => {
   popup.textContent = message;
   popup.classList.add('show');
 
+  resetCircle();
+
   setTimeout(() => {
     popup.classList.remove('show');
   }, duration)
@@ -243,9 +242,13 @@ applyBtn.addEventListener('click', () => {
   return;
   }
 
+  resetTimer();
+
   if (newSession >= 1 && newSession <= 60) {
     session.textContent = newSession;
     sessionTime.textContent = newSession;
+    totalSeconds = newSession * 60;
+    document.querySelector('.seconds').textContent = '00';
   }
 
   if (newBreak >= 1 && newBreak <= 60) {

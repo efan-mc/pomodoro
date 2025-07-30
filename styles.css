@@ -68,6 +68,7 @@ p {
 
 .circle-shape {
   pointer-events: none;
+  position: relative;
 }
 
 .semi-circle {

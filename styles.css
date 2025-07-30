@@ -1,16 +1,41 @@
+:root {
+  --bg-color: #ffffff;
+  --bg-gradient: linear-gradient(-50deg, #025159 0%, #733b36 80%);
+  --text-color: #d8e9ef;
+  --glass-color: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --circle-color: #bf5239;
+  --circle-mask: rgba(255, 255, 255, 0.3);
+  --button-bg: rgba(255, 255, 255, 0.08);
+  --button-hover: rgba(255, 255, 255, 0.15);
+}
+
+[data-theme="dark"] {
+  --bg-color: #0f1a1c;
+  --bg-gradient: linear-gradient(-50deg, #0f1a1c 0%, #1a1f2c 80%);
+  --text-color: #d8e9ef;
+  --btn-bg: rgba(255, 255, 255, 0.03);
+  --btn-hover: rgba(255, 255, 255, 0.08);
+  --glass: rgba(255, 255, 255, 0.02);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --circle-color: #bf5239;
+  --circle-mask: rgba(255, 255, 255, 0.2);
+}
+
 html {
   font-family: "Fira Sans", sans-serif;
   font-size: 20px;
   letter-spacing: 1.2px;
   min-height: 100vh;
-  color: #d8e9ef;
-  background-image: linear-gradient(-50deg, #025159 0%, #733b36 80%);
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  background-image: var(--bg-gradient);
   background-size: cover;
 }
 
 h1 {
   margin: 0 auto 10px auto;
-  color: #d8e9ef;
+  color: var(--text-color);
 }
 
 p {
@@ -29,9 +54,9 @@ p {
   text-align: center;
   border-radius: 5px;
   padding: 20px;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--glass-color);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--mask-color);
 }
 
 .app-circle {
@@ -90,13 +115,13 @@ p {
   font-size: 1rem;
   padding: 0.6rem 1.5rem;
   border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: var(--button-bg);
   color: #d8e9ef;
   transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .btn-start:hover {
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: var(--button-hover);
   transform: scale(1.05);
 }
 
@@ -105,7 +130,7 @@ p {
   font-size: 250%;
   position: relative;
   top: 50px;
-  color: #d8e9ef;
+  color: var(--text-color);
   text-shadow: 0 0 10px rgba(216, 233, 239, 0.3);
 }
 
@@ -131,7 +156,7 @@ button {
 button:hover {
   cursor: pointer;
   color: #90c0d1;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--button-hover);
   box-shadow: 0 0 5px rgba(216, 233, 239, 0.3);
 }
 
@@ -148,13 +173,13 @@ button:active {
   padding: 0.4rem 0.8rem;
   border: none;
   border-radius: 50px;
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: var(--button-bg);
   color: #d8e9ef;
   transition: background-color 0.2s ease;
 }
 
 .btn-pause:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--button-hover);
 }
 
 .btn-start {
@@ -190,13 +215,13 @@ button:active {
   padding: 0.4rem 0.8rem;
   border: none;
   border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: var(--button-bg);
   color: #d8e9ef;
   transition: background-color 0.2s ease;
 }
 
 .session-controls button:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--button-hover);
 }
 
 .work-break-controls button {
@@ -205,13 +230,13 @@ button:active {
   padding: 0.4rem 1.5rem;
   border: none;
   border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: var(--button-bg);
   color: #d8e9ef;
   transition: background-color 0.2s ease;
 }
 
 .work-break-controls button:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--button-hover);
 }
 
 .popup-message {
@@ -245,7 +270,7 @@ button:active {
   padding: 0.5rem;
   border: none;
   border-radius: 50px;
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: var(--button-bg);
   color: #d8e9ef;
   transition: background-color 0.2s ease;
 }
@@ -258,18 +283,18 @@ button:active {
   padding: 0.5rem;
   border: none;
   border-radius: 50px;
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: var(--button-bg);
   color: #d8e9ef;
   transition: background-color 0.2s ease;
 }
 
 .toggle-theme:hover {
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: var(--button-hover);
   cursor: pointer;
 }
 
 .btn-settings:hover {
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: var(--button-hover);
   cursor: pointer;
 }
 
@@ -305,7 +330,7 @@ button:active {
   right: 12px;
   font-size: 1.2rem;
   border: none;
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: var(--button-bg);
   color: #d8e9ef;
   border-radius: 50%;
   width: 36px;
@@ -321,7 +346,7 @@ button:active {
   padding: 0.4rem;
   border: none;
   border-radius: 8px;
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: var(--button-bg);
   color: #d8e9ef;
   font-size: 0.9rem;
   width: 70px;
@@ -345,7 +370,7 @@ button:active {
   padding: 0.4rem 1rem;
   font-size: 0.8rem;
   border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: var(--button-bg);
   color: #d8e9ef;
   transition: background-color 0.2s ease;
 }

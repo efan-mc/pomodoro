@@ -9,6 +9,8 @@ const workBtn = document.querySelector('.btn-work')
 const settingsBtn = document.querySelector('.btn-settings');
 const closeBtn = document.querySelector('.btn-close-settings');
 const applyBtn = document.querySelector('.btn-apply-settings');
+const themeToggleBtn = document.querySelector('.toggle-theme');
+const themeIcon = themeToggleBtn.querySelector('img');
 const sessionInput = document.getElementById('sessionLength');
 const breakInput = document.getElementById('breakLength');
 const autoNextCheckbox = document.getElementById('autoNext');
@@ -246,4 +248,19 @@ applyBtn.addEventListener('click', () => {
   autoNext = autoNextCheckbox.checked;
 
   settingsMenu.classList.remove('active');
+});
+
+themeToggleBtn.addEventListener('click',  () => {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+
+  if (isDark) {
+    html.removeAttribute('data-theme');
+    themeIcon.src = 'icons/light_mode_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg';
+    themeIcon.alt = 'Light mode Icon';
+  } else {
+    html.setAttribute('data-theme', 'dark');
+    themeIcon.src = 'icons/dark_mode_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg';
+    themeIcon.alt = 'Dark mode Icon';
+  }
 });

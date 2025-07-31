@@ -13,7 +13,6 @@ const themeToggleBtn = document.querySelector('.toggle-theme');
 const themeIcon = themeToggleBtn.querySelector('img');
 const sessionInput = document.getElementById('sessionLength');
 const breakInput = document.getElementById('breakLength');
-const autoNextCheckbox = document.getElementById('autoNext');
 const settingsMenu = document.querySelector('.off-screen-menu');
 const sessionTime = document.querySelector('.session-time');
 const session = document.querySelector('.minutes');
@@ -254,9 +253,7 @@ applyBtn.addEventListener('click', () => {
   if (newBreak >= 1 && newBreak <= 60) {
     breakMinutes = newBreak;
   }
-
-  autoNext = autoNextCheckbox.checked;
-
+  
   settingsMenu.classList.remove('active');
 });
 

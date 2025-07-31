@@ -1,3 +1,4 @@
+// ========== DOM ELEMENTS ==========
 const bells = new Audio('./sounds/bells.wav');
 const startBtn = document.querySelector('.btn-start');
 const resetBtn = document.querySelector('.btn-reset');
@@ -16,6 +17,8 @@ const breakInput = document.getElementById('breakLength');
 const settingsMenu = document.querySelector('.off-screen-menu');
 const sessionTime = document.querySelector('.session-time');
 const session = document.querySelector('.minutes');
+
+// ========== DEFAULT VALUES ==========
 const DEFAULT_SESSION_MINUTES = 25;
 const DEFAULT_INCREMENT = 5;
 let breakMinutes = 5;
@@ -23,6 +26,8 @@ let myInterval;
 let state = true;
 let isPaused = false;
 let totalSeconds;
+
+// ========== TIMER LOGIC ==========
 
 const updateSeconds = () => {
   const minuteDiv = document.querySelector('.minutes');
@@ -49,13 +54,10 @@ const updateSeconds = () => {
     isPaused = false;
     pauseBtn.textContent = '⏸';
   }
-
-  elapsedSeconds++;
 };
 
 const appTimer = () => {
     const sessionAmount = Number.parseInt(session.textContent);
-    elapsedSeconds = 0;
 
     if (state) {
       state = false;
@@ -102,6 +104,8 @@ const pauseTimer = () => {
 };
 
 pauseBtn.addEventListener('click', pauseTimer);
+
+// ========== TIME ADJUSTMENT ==========
 
 const addTime = () => {
   const current = parseInt(sessionTime.textContent);
@@ -177,8 +181,6 @@ const workTime = () => {
     return;
     }
 
-  elapsedSeconds = 0;
-
   if (state || isPaused) {
     sessionTime.textContent = DEFAULT_SESSION_MINUTES;
     session.textContent = DEFAULT_SESSION_MINUTES;
@@ -193,6 +195,8 @@ const workTime = () => {
 
 workBtn.addEventListener('click', workTime);
 
+// ========== POPUP UI ==========
+
 const showPopup = (message, duration = 1400) => {
   const popup = document.getElementById('popup');
   popup.textContent = message;
@@ -202,6 +206,8 @@ const showPopup = (message, duration = 1400) => {
     popup.classList.remove('show');
   }, duration)
 };
+
+// ========== SETTINGS MENU ==========
 
 settingsBtn.addEventListener('click', () => {
   settingsMenu.classList.toggle('active');
@@ -235,6 +241,8 @@ applyBtn.addEventListener('click', () => {
   
   settingsMenu.classList.remove('active');
 });
+
+// ========== THEME TOGGLE ==========
 
 themeToggleBtn.addEventListener('click',  () => {
   const html = document.documentElement;

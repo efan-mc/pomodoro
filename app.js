@@ -29,7 +29,7 @@ let rotationAngle = 0;
 const updateCircleProgress = () => {
     const totalTime = parseInt(session.textContent) * 60;
     const progress = elapsedSeconds / totalTime;
-    const degrees = Math.min(progress * 360, 360);
+    const degrees = Math.min(progress * 360);
 
     const left = document.querySelector('.left-side.circle');
     const right = document.querySelector('.right-side.circle');

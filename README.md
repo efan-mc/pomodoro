@@ -19,9 +19,10 @@ A Pomodoro Timer built with **HTML, CSS, and JavaScript**. This project began as
 
 ## 🕶 Preview
 ### ☀️ Light Mode
-<img width="445" height="350" alt="pomodoroAppLight" src="https://github.com/user-attachments/assets/3ce9a41d-720c-4291-8a2a-6684047638df" />
+<img width="445" height="350" alt="Light mode" src="https://github.com/user-attachments/assets/3ce9a41d-720c-4291-8a2a-6684047638df" />
+
 ### 🌙 Dark Mode
-<img width="444" height="350" alt="pomodoroAppDark" src="https://github.com/user-attachments/assets/b10be83f-4dbc-441f-a06e-d700e86dccaa" />
+<img width="444" height="350" alt="Dark mode" src="https://github.com/user-attachments/assets/b10be83f-4dbc-441f-a06e-d700e86dccaa" />
 
 ## 🛠 Furture Plans
 

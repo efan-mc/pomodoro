@@ -1,6 +1,6 @@
 # Pomodoro 🍅
 
-First project Pomodor Timer built with *HTML, CSS and JavaScript* based on the Codedex tutorial, with additional featuers added by me :). The timer makes use of the Pomodoro Technique and allows the user to have 25 minutes of work followed by a short break.
+A Pomodoro Timer built with **HTML, CSS, and JavaScript**. This project began as part of the [Codedex Pomodoro Timer tutorial](https://www.codedex.io/projects/build-a-pomodoro-app-with-html-css-js), which provided the core functionality. I extended it by adding my own features and visual polish. The timer follows the Pomodoro Technique — 25 minutes of focused work followed by short breaks.
 
 ## ✨ Features
 
@@ -18,5 +18,12 @@ First project Pomodor Timer built with *HTML, CSS and JavaScript* based on the C
 - JavaScript
 
 ## 🕶 Preview
-<img width="444" height="350" alt="pomodoroAppDark" src="https://github.com/user-attachments/assets/b10be83f-4dbc-441f-a06e-d700e86dccaa" />
+### ☀️ Light Mode
 <img width="445" height="350" alt="pomodoroAppLight" src="https://github.com/user-attachments/assets/3ce9a41d-720c-4291-8a2a-6684047638df" />
+### 🌙 Dark Mode
+<img width="444" height="350" alt="pomodoroAppDark" src="https://github.com/user-attachments/assets/b10be83f-4dbc-441f-a06e-d700e86dccaa" />
+
+## 🛠 Furture Plans
+
+- Add circular animation to timer
+- Save user preference

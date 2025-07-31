@@ -13,6 +13,32 @@
     <title>Pomodoro App</title>
   </head>
   <body>
+    <div class="off-screen-menu">
+      <h2>Settings</h2>
+      <button class="btn-close-settings" title="Close Settings">✖</button>
+      <div class="setting-group">
+        <div for="sessionLength">Session Length (min)</div>
+        <input type="number" id="sessionLength" min="1" max="60" value="25" />
+
+        <div for="breakLength">Break Length (min)</div>
+        <input type="number" id="breakLength" min="1" max="60" value="5" />
+        <div class="apply-controls">
+          <button class="btn-apply-settings">Apply</button>
+        </div>
+      </div>
+    </div>
+    <button class="btn-settings" title="Settings">
+      <img
+        src="icons/settings_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg"
+        alt="Settings Icon"
+      />
+    </button>
+    <button class="toggle-theme" title="Settings">
+      <img
+        src="icons\light_mode_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg"
+        alt="Light mode Icon"
+      />
+    </button>
     <div class="app-container">
       <h1>pomodoro</h1>
       <div class="app-message">press start to begin</div>

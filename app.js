@@ -23,29 +23,6 @@ let myInterval;
 let state = true;
 let isPaused = false;
 let totalSeconds;
-let rotationAngle = 0;
-
-const updateCircleProgress = () => {
-    const totalTime = parseInt(session.textContent) * 60;
-    const progress = elapsedSeconds / totalTime;
-    const degrees = Math.min(progress * 360);
-
-    const left = document.querySelector('.left-side.circle');
-    const right = document.querySelector('.right-side.circle');
-
-    if (degrees <= 180) {
-    right.style.transform = `rotate(${degrees}deg)`;
-    left.style.transform = `rotate(0deg)`;
-    } else {
-    right.style.transform = `rotate(180deg)`;
-    left.style.transform = `rotate(${degrees-180}deg)`; 
-  }
-};
-
-const resetCircle = () => {
-  document.querySelector('.left-side.circle').style.transform = 'rotate(0deg)';
-  document.querySelector('.right-side.circle').style.transform = 'rotate(0deg)';
-};
 
 const updateSeconds = () => {
   const minuteDiv = document.querySelector('.minutes');
@@ -74,13 +51,11 @@ const updateSeconds = () => {
   }
 
   elapsedSeconds++;
-  updateCircleProgress();
 };
 
 const appTimer = () => {
     const sessionAmount = Number.parseInt(session.textContent);
     elapsedSeconds = 0;
-    updateCircleProgress();
 
     if (state) {
       state = false;
@@ -102,7 +77,6 @@ startBtn.addEventListener('click', appTimer)
 const resetTimer = () => {
   const minuteDiv = document.querySelector('.minutes');
   const secondDiv = document.querySelector('.seconds');
-  resetCircle();
   clearInterval(myInterval); 
   state = true;
   isPaused = false;
@@ -173,8 +147,6 @@ const breakTime = () => {
     return;
     }
 
-  resetCircle();
-
   if (state || isPaused) {
     sessionTime.textContent = breakMinutes;
     session.textContent = breakMinutes;
@@ -196,7 +168,6 @@ const workTime = () => {
     }
 
   elapsedSeconds = 0;
-  updateCircleProgress();
 
   if (state || isPaused) {
     sessionTime.textContent = DEFAULT_SESSION_MINUTES;
@@ -216,8 +187,6 @@ const showPopup = (message, duration = 1400) => {
   const popup = document.getElementById('popup');
   popup.textContent = message;
   popup.classList.add('show');
-
-  resetCircle();
 
   setTimeout(() => {
     popup.classList.remove('show');

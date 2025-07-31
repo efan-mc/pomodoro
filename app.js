@@ -118,6 +118,11 @@ const addTime = () => {
   showPopup('please pause before changing time');
   return;
   }
+
+  if (isPaused) {
+  showPopup('please reset before changing time');
+  return;
+  }
 };
 
 plusBtn.addEventListener('click', addTime);
@@ -136,7 +141,12 @@ const subtractTime = () => {
   if (!state && !isPaused) {
   showPopup('please pause before changing time');
   return;
-    }
+  }
+
+  if (isPaused) {
+  showPopup('please reset before changing time');
+  return;
+  }
 };
 
 minusBtn.addEventListener('click', subtractTime);

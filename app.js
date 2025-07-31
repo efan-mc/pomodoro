@@ -1,3 +1,4 @@
+// ========== DOM ELEMENTS ==========
 const bells = new Audio('./sounds/bells.wav');
 const startBtn = document.querySelector('.btn-start');
 const resetBtn = document.querySelector('.btn-reset');
@@ -16,6 +17,8 @@ const breakInput = document.getElementById('breakLength');
 const settingsMenu = document.querySelector('.off-screen-menu');
 const sessionTime = document.querySelector('.session-time');
 const session = document.querySelector('.minutes');
+
+// ========== DEFAULT VALUES ==========
 const DEFAULT_SESSION_MINUTES = 25;
 const DEFAULT_INCREMENT = 5;
 let breakMinutes = 5;
@@ -23,29 +26,8 @@ let myInterval;
 let state = true;
 let isPaused = false;
 let totalSeconds;
-let rotationAngle = 0;
 
-const updateCircleProgress = () => {
-    const totalTime = parseInt(session.textContent) * 60;
-    const progress = elapsedSeconds / totalTime;
-    const degrees = Math.min(progress * 360);
-
-    const left = document.querySelector('.left-side.circle');
-    const right = document.querySelector('.right-side.circle');
-
-    if (degrees <= 180) {
-    right.style.transform = `rotate(${degrees}deg)`;
-    left.style.transform = `rotate(0deg)`;
-    } else {
-    right.style.transform = `rotate(180deg)`;
-    left.style.transform = `rotate(${degrees-180}deg)`; 
-  }
-};
-
-const resetCircle = () => {
-  document.querySelector('.left-side.circle').style.transform = 'rotate(0deg)';
-  document.querySelector('.right-side.circle').style.transform = 'rotate(0deg)';
-};
+// ========== TIMER LOGIC ==========
 
 const updateSeconds = () => {
   const minuteDiv = document.querySelector('.minutes');
@@ -72,15 +54,10 @@ const updateSeconds = () => {
     isPaused = false;
     pauseBtn.textContent = '⏸';
   }
-
-  elapsedSeconds++;
-  updateCircleProgress();
 };
 
 const appTimer = () => {
     const sessionAmount = Number.parseInt(session.textContent);
-    elapsedSeconds = 0;
-    updateCircleProgress();
 
     if (state) {
       state = false;
@@ -102,7 +79,6 @@ startBtn.addEventListener('click', appTimer)
 const resetTimer = () => {
   const minuteDiv = document.querySelector('.minutes');
   const secondDiv = document.querySelector('.seconds');
-  resetCircle();
   clearInterval(myInterval); 
   state = true;
   isPaused = false;
@@ -129,6 +105,8 @@ const pauseTimer = () => {
 
 pauseBtn.addEventListener('click', pauseTimer);
 
+// ========== TIME ADJUSTMENT ==========
+
 const addTime = () => {
   const current = parseInt(sessionTime.textContent);
 
@@ -142,6 +120,11 @@ const addTime = () => {
 
   if (!state && !isPaused) {
   showPopup('please pause before changing time');
+  return;
+  }
+
+  if (isPaused) {
+  showPopup('please reset before changing time');
   return;
   }
 };
@@ -162,7 +145,12 @@ const subtractTime = () => {
   if (!state && !isPaused) {
   showPopup('please pause before changing time');
   return;
-    }
+  }
+
+  if (isPaused) {
+  showPopup('please reset before changing time');
+  return;
+  }
 };
 
 minusBtn.addEventListener('click', subtractTime);
@@ -172,8 +160,6 @@ const breakTime = () => {
     showPopup('please pause before changing time');
     return;
     }
-
-  resetCircle();
 
   if (state || isPaused) {
     sessionTime.textContent = breakMinutes;
@@ -195,9 +181,6 @@ const workTime = () => {
     return;
     }
 
-  elapsedSeconds = 0;
-  updateCircleProgress();
-
   if (state || isPaused) {
     sessionTime.textContent = DEFAULT_SESSION_MINUTES;
     session.textContent = DEFAULT_SESSION_MINUTES;
@@ -212,17 +195,19 @@ const workTime = () => {
 
 workBtn.addEventListener('click', workTime);
 
+// ========== POPUP UI ==========
+
 const showPopup = (message, duration = 1400) => {
   const popup = document.getElementById('popup');
   popup.textContent = message;
   popup.classList.add('show');
 
-  resetCircle();
-
   setTimeout(() => {
     popup.classList.remove('show');
   }, duration)
 };
+
+// ========== SETTINGS MENU ==========
 
 settingsBtn.addEventListener('click', () => {
   settingsMenu.classList.toggle('active');
@@ -256,6 +241,8 @@ applyBtn.addEventListener('click', () => {
   
   settingsMenu.classList.remove('active');
 });
+
+// ========== THEME TOGGLE ==========
 
 themeToggleBtn.addEventListener('click',  () => {
   const html = document.documentElement;

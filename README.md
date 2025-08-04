@@ -5,7 +5,7 @@ A Pomodoro Timer built with **HTML, CSS, and JavaScript**. This project began as
 ## 🌍 Deployment
 
 Deployed with Vercel
-🔗 Live site: pomodoro-tau-sandy.vercel.app
+Live site: [Pomodoro Timer](https://pomodoro-tau-sandy.vercel.app/)
 ## ✨ Features
 
 - Start, pause and reset timer

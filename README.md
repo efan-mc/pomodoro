@@ -1,6 +1,6 @@
 # Pomodoro 🍅
 
-A Pomodoro Timer built with **HTML, CSS, and JavaScript**. This project began as part of the [Codedex Pomodoro Timer tutorial](https://www.codedex.io/projects/build-a-pomodoro-app-with-html-css-js), which provided the core functionality. I extended it by adding my own features and visual polish. The timer follows the Pomodoro Technique — 25 minutes of focused work followed by short breaks.
+> A Pomodoro Timer built with **HTML, CSS, and JavaScript**. This project began as part of the [Codedex Pomodoro Timer tutorial](https://www.codedex.io/projects/build-a-pomodoro-app-with-html-css-js), which provided the core functionality. I extended it by adding my own features and visual polish. The timer follows the Pomodoro Technique — 25 minutes of focused work followed by short breaks.
 
 ## 🌍 Deployment
 
